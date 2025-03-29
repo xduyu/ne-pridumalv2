@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фестиваль искусств | Молодежь России</title>
+    <!-- Make sure the path to your CSS file is correct -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Or adjust path as needed: e.g., href="../styles/style.css" -->
+
+    <!-- Example inline style for hero background - Better to create a dedicated CSS class -->
+    <style>
+        .arts-hero-bg {
+             background: url('https://www.binoculars-travel.ru/wp-content/uploads/platonovsky-festival.jpg') no-repeat center center/cover; /* Example concert image */
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Молодежь России</span>
+        </div>
+        <nav>
+            <!-- Changed href to #top which points to the hero section -->
+            <a href="./index.html">Главная</a>
+            <a href="./eco-festival.html">О марафоне</a>
+            <a href="./art-festival.html">Фестиваль искусств</a>
+            <a href="#join" class="button">Участвовать</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Applied .hero class and added ID -->
+    <!-- Added arts-hero-bg for the background -->
+    <section class="hero arts-hero-bg" id="top">
+        <h1>Фестиваль искусств 2025</h1>
+        <p>Место встречи и самовыражения творческой молодежи страны.</p>
+        <!-- Added an extra button styled by the CSS -->
+        <a href="#program" class="button">Смотреть программу</a>
+    </section>
+
+    <!-- About Section - Removed generic .content-block -->
+    <section id="about">
+        <h2>О фестивале</h2>
+        <p>Это ежегодное событие, которое собирает под одной крышей самых талантливых молодых художников, музыкантов, танцоров, актеров и других представителей творческих профессий со всей России. Мы создаем пространство для обмена опытом, вдохновения и демонстрации своего искусства широкой публике.</p>
+        <!-- Gallery remains simple, could be enhanced with specific CSS or JS lightbox -->
+        <div class="gallery" style="text-align: center; margin-top: 30px;"> <!-- Basic centering -->
+             <!-- Replace with actual relevant images -->
+            <img src="https://festivaliskusstv.ru/wp-content/uploads/2024/11/hero-2-scaled.jpg" alt="Фото с выставки" style="margin: 5px; border-radius: 8px; max-width: 90%;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvlyMw2GrEgH_LYB96YzB7Nz_euux3Q1e5hA&s" alt="Фото с концерта" style="margin: 5px; border-radius: 8px; max-width: 90%;">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8E_nnQwjVNj93aznhfC-fZuAXY9HnbcaUQ&s" alt="Фото с мастер-класса" style="margin: 5px; border-radius: 8px; max-width: 90%;">
+        </div>
+    </section>
+
+    <!-- Program Section - Replaced ul with project cards -->
+    <section id="program" class="projects"> <!-- Using .projects class for styling -->
+        <h2>Программа Фестиваля</h2>
+        <div class="project-grid">
+
+            <!-- Program Item 1 -->
+            <div class="project-card">
+                 <div class="card-image-wrapper">
+                    <!-- Replace with relevant icon/image -->
+                    <img src="https://thecity.m24.ru/b/d/SYketSiveYg0IvPWfurQC04VAxhsdX2wl4VGK3kftkTqqpuDxHXYBEb3KdEqJFNmHN2I2j8tqA3PYdbYIe71F2MJ5xZVjA8=0nlT74V8sXSSvPNPTw0DSA.jpg" alt="Открытие фестиваля">
+                </div>
+                <div class="card-content">
+                    <h3>Торжественное Открытие</h3>
+                    <p>15 мая - Яркое шоу, представление участников и старт фестиваля.</p>
+                    <a href="#join" class="button card-button">Напомнить</a>
+                </div>
+            </div>
+
+            <!-- Program Item 2 -->
+            <div class="project-card">
+                 <div class="card-image-wrapper">
+                     <!-- Replace with relevant icon/image -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2xpug0NBOvxnQNGO3RCU7qQi9ozXUOvQ4Ig&s" alt="Выставка художников">
+                </div>
+                <div class="card-content">
+                    <h3>Вернисаж "Новые Имена"</h3>
+                    <p>16 мая - Выставка работ молодых художников и фотографов.</p>
+                    <a href="#" class="button card-button">Подробнее</a> <!-- Link to specific event page -->
+                </div>
+            </div>
+
+            <!-- Program Item 3 -->
+            <div class="project-card">
+                <div class="card-image-wrapper">
+                     <!-- Replace with relevant icon/image -->
+                    <img src="https://mongolia.mfa.gov.by/kcfinder/upload/mongolia/images/_%D0%B1.jpg" alt="Концерт">
+                </div>
+                <div class="card-content">
+                    <h3>Сцена Свободы</h3>
+                    <p>17 мая - Концерт независимых музыкальных групп и исполнителей.</p>
+                    <a href="#" class="button card-button">Билеты</a> <!-- Link to ticket page -->
+                </div>
+            </div>
+             <!-- Add more program items as cards here -->
+
+        </div>
+    </section>
+
+    <!-- Join/Registration Form Section - New Section -->
+    <section id="join" class="form-section">
+        <h2>Станьте Участником или Гостем!</h2>
+        <form action="#" method="POST"> <!-- Add your form processing endpoint -->
+            <input type="text" name="name" placeholder="Ваше Имя" required>
+            <input type="email" name="email" placeholder="Ваш Email" required>
+            <!-- Example Select -->
+            <select name="participation_type" required style="padding: 14px 18px; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--dark-text); cursor:pointer;">
+                <option value="" disabled selected>Я хочу быть...</option>
+                <option value="artist">Участником (художник/музыкант/и т.д.)</option>
+                <option value="guest">Гостем</option>
+                <option value="volunteer">Волонтером</option>
+            </select>
+            <textarea name="message" placeholder="Расскажите о себе или вашем проекте (для участников)"></textarea>
+            <button type="submit" class="button">Отправить Заявку</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Фестиваль искусств | Молодежь России</p>
+        <!-- Added Social Links Div -->
+        <div class="social-links">
+            <!-- Replace # with actual links and src with icon paths -->
+            <a href="#" target="_blank" aria-label="VKontakte">
+                <img src="icons/vk.svg" alt="VK">
+            </a>
+            <a href="#" target="_blank" aria-label="Telegram">
+                <img src="icons/telegram.svg" alt="Telegram">
+            </a>
+             <a href="#" target="_blank" aria-label="Instagram">
+                <img src="icons/instagram.svg" alt="Instagram"> <!-- Example -->
+            </a>
+        </div>
+    </footer>
+
+    <!-- Optional: Add script for header scroll effect -->
+    <!-- <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+    </script> -->
+</body>
+</html>

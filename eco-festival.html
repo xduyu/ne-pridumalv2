@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экомарафон 2025 | Молодежь России</title>
+    <!-- Make sure the path to your CSS file is correct -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Or if it's in a styles folder: <link rel="stylesheet" href="styles/style.css"> -->
+    <!-- Or if it's one level up: <link rel="stylesheet" href="../styles/style.css"> -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Молодежь России</span>
+        </div>
+        <nav>
+            <a href="./index.html">Главная</a>
+            <a href="./eco-festival.html">О марафоне</a>
+            <a href="./art-festival.html">Фестиваль искусств</a>  <!-- Renamed from Мероприятия to match content better -->
+            <a href="#register" class="button">Зарегистрироваться</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <h1>Экомарафон 2025</h1>
+        <p>Год экологических инициатив. Спасем планету вместе!</p>
+        <a href="#register" class="button">Принять участие</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about"> <!-- Removed content-block unless specifically needed by other styles -->
+        <h2>О марафоне</h2>
+        <p>Экомарафон 2025 - это годовая программа экологических инициатив, созданная для активной и неравнодушной молодежи России. Мы объединяем усилия для реальных изменений: от масштабных акций по посадке деревьев и очистке территорий до разработки инновационных эко-стартапов и образовательных лекций. Присоединяйтесь, чтобы внести свой вклад в сохранение природы!</p>
+    </section>
+
+    <!-- Events/Projects Section -->
+    <section id="events" class="projects">
+        <h2>Наши Инициативы</h2>
+        <div class="project-grid">
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <div class="card-image-wrapper">
+                    <!-- Replace with your actual image path -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw8u-fd28-hs8YIYPHCQZ-QGnNmtdwx24hFg&s" alt="Акция Чистый город">
+                </div>
+                <div class="card-content">
+                    <h3>Чистый город</h3>
+                    <p>Присоединяйтесь к масштабному субботнику в городских парках и скверах. Сделаем наши города чище и уютнее! Старт 10 июня.</p>
+                    <!-- Optional Button -->
+                    <a href="#register" class="button card-button">Участвовать</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <div class="card-image-wrapper">
+                    <!-- Replace with your actual image path -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJETJ35DERSGG0KTYKVLZKYs-rbLjw5UOe4A&s" alt="Эко-лекторий">
+                </div>
+                <div class="card-content">
+                    <h3>Эко-лекторий</h3>
+                    <p>Серия встреч с ведущими экспертами в области экологии, устойчивого развития и зеленых технологий. Узнайте больше 15 июня.</p>
+                     <!-- Optional Button -->
+                     <a href="#" class="button card-button">Подробнее</a> <!-- Link to event details page -->
+                </div>
+            </div>
+
+            <!-- Project Card 3 (Example) -->
+            <div class="project-card">
+                <div class="card-image-wrapper">
+                     <!-- Replace with your actual image path -->
+                    <img src="https://stroi-gazon.ru/wp-content/uploads/2018/05/posadka-derevev-01.jpg" alt="Посадка деревьев">
+                </div>
+                <div class="card-content">
+                    <h3>Зеленый Пояс</h3>
+                    <p>Масштабная акция по посадке деревьев в регионах России. Станьте частью создания новых лесов! Начало осенью.</p>
+                     <!-- Optional Button -->
+                     <a href="#register" class="button card-button">Записаться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="register" class="form-section">
+        <h2>Присоединяйтесь к марафону!</h2>
+        <form action="#" method="POST"> <!-- Add your form processing endpoint to action -->
+            <input type="text" name="name" placeholder="Ваше Имя" required>
+            <input type="email" name="email" placeholder="Ваш Email" required>
+            <textarea name="message" placeholder="Почему вы хотите участвовать? (Необязательно)"></textarea>
+            <button type="submit" class="button">Отправить заявку</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Экомарафон | Молодежь России</p>
+        <div class="social-links">
+            <!-- Replace # with actual links and src with icon paths -->
+            <a href="#" target="_blank" aria-label="VKontakte">
+                <img src="icons/vk.svg" alt="VK">
+            </a>
+            <a href="#" target="_blank" aria-label="Telegram">
+                <img src="icons/telegram.svg" alt="Telegram">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Optional: Add script for header scroll effect -->
+    <!-- <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Молодежь России — страна возможностей</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header>
+        <div class="logo">
+            <span>Молодежь России</span>
+        </div>
+        <nav>
+            <a href="./index.html">Главная</a>
+            <a href="./eco-festival.html">О марафоне</a>
+            <a href="./art-festival.html">Фестиваль искусств</a> <!-- Renamed from Мероприятия to match content better -->
+            <a href="#join" class="button">Присоединиться</a>
+        </nav>
+    </header>
+
+    <!-- Герой-баннер -->
+    <section class="hero">
+        <h1>Твой проект — наша поддержка!</h1>
+        <p>Платформа для молодежных инициатив в культуре, творчестве и общественной деятельности.</p>
+        <a href="#join" class="button">Подать заявку</a>
+    </section>
+
+    <!-- Блок с проектами -->
+    <section id="projects" class="projects">
+        <h2>Наши проекты</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="https://www.binoculars-travel.ru/wp-content/uploads/platonovsky-festival.jpg" alt="Фестиваль искусств">
+                <div class="info-block">
+                    <h3>Фестиваль искусств</h3>
+                    <p>Для творческой молодежи</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1fyv9vf2x-yuhmdi7L5PZE2N2GzEvVjisug&s" alt="Экологический марафон">
+                <div class="info-block">
+                    <h3>Экомарафон</h3>
+                    <p>Спасем планету вместе</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма для заявки -->
+    <section id="join" class="form-section">
+        <h2>Стань частью команды</h2>
+        <form id="application-form">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Опишите вашу идею..."></textarea>
+            <button type="submit" class="button">Отправить</button>
+        </form>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2025 Молодежь России</p>
+        <div class="social-links">
+            <a href="#"><img src="images/vk.png" alt="ВКонтакте"></a>
+            <a href="#"><img src="images/telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); /* Подключаем Roboto */
+
+/* =========================================
+   ПЕРЕМЕННЫЕ (Расширенные)
+   ========================================= */
+:root {
+    --primary-color: #0d6efd; /* Обновленный синий, более яркий */
+    --primary-light: #cfe2ff; /* Светлый оттенок синего */
+    --primary-hover-color: #0a58ca; /* Темнее для ховера */
+    --secondary-color: #6c757d; /* Приглушенный серый */
+    --success-color: #198754; /* Зеленый */
+    --danger-color: #dc3545; /* Красный */
+    --light-bg: #f8f9fa; /* Основной светлый фон */
+    --section-bg: #ffffff; /* Белый фон для секций, будем добавлять градиенты/тени */
+    --white: #ffffff;
+    --dark-text: #212529; /* Еще темнее текст */
+    --light-text: #f8f9fa; /* Светлый текст (для темных фонов) */
+    --border-color: #dee2e6;
+    --gradient-primary: linear-gradient(45deg, #0d6efd, #0a58ca); /* Градиент для акцентов */
+    --gradient-dark: linear-gradient(to top, #212529, #343a40); /* Темный градиент для футера */
+    --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Усиленная тень */
+    --card-hover-shadow: 0 10px 30px rgba(0, 88, 202, 0.15); /* Тень при ховере */
+    --blur-effect: blur(10px); /* Эффект блюра */
+    --transition-speed: 0.35s; /* Чуть дольше для плавности */
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Упругий переход */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px; /* Больший радиус */
+}
+
+/* =========================================
+   Общие стили с улучшениями
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.7; /* Увеличил для читаемости */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+}
+
+/* Добавим плавный скроллбар (Webkit) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-md);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover-color);
+}
+
+/* =========================================
+   HEADER (Стеклянный с эффектами)
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8%; /* Скорректировал паддинг */
+    /* Эффект стекла (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    backdrop-filter: var(--blur-effect); /* Блюр фона */
+    -webkit-backdrop-filter: var(--blur-effect); /* Для Safari */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Тонкая граница */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: background-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
+/* Добавляем тень и меняем фон при скролле (если нужно) */
+body.scrolled header {
+     /* Можно сделать фон менее прозрачным при скролле */
+     background: rgba(255, 255, 255, 0.95);
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 22px; /* Крупнее лого */
+    font-weight: 700; /* Жирнее */
+    color: var(--primary-hover-color); /* Используем темный синий */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* Оставляем, если нравится */
+    /* Или градиентный текст (раскомментировать): */
+    /* background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; */
+}
+
+nav a {
+    margin: 0 15px; /* Чуть меньше отступ */
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 8px; /* Больше отступ для линии */
+    transition: color var(--transition-speed) ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Толще линия */
+    bottom: 0;
+    left: 0; /* Анимация слева направо */
+    background-image: var(--gradient-primary); /* Градиентная линия */
+    border-radius: 2px;
+    transition: width var(--transition-speed) var(--transition-bounce); /* Упругая анимация */
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.button {
+    background: var(--gradient-primary); /* Градиент для кнопки */
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-size var(--transition-speed) ease, /* Анимация фона */
+                transform var(--transition-speed) var(--transition-bounce),
+                box-shadow var(--transition-speed) ease;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3); /* Тень */
+    background-size: 100% 100%; /* Для анимации */
+}
+
+.button:hover {
+    background-size: 150% 150%; /* Эффект "переливания" градиента */
+    transform: translateY(-4px) scale(1.02); /* Больший подъем и легкое увеличение */
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.45); /* Усиленная тень */
+}
+
+/* =========================================
+   Герой-баннер (Больше глубины и анимации)
+   ========================================= */
+.hero {
+    background: url('https://cdnn21.img.ria.ru/images/07e5/06/19/1738581954_0:346:3025:2048_1920x0_80_0_0_6f69dd33b8b7580ba5cbe21094c3d131.jpg') no-repeat center center/cover;
+    /* background-attachment: fixed; */ /* Эффект параллакса, если нужно */
+    height: 70vh; /* Выше */
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    overflow: hidden; /* Важно для псевдоэлементов */
+}
+
+/* Улучшенный оверлей с градиентом */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%); /* Градиент затемнения */
+    z-index: 1;
+    /* Добавим эффект "виньетки" (раскомментировать) */
+    /* box-shadow: inset 0 0 100px rgba(0,0,0,0.5); */
+}
+
+/* Контент поверх оверлея */
+.hero h1, .hero p, .hero .button {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px); /* Начальное смещение больше */
+    animation: fadeInUp 1s var(--transition-bounce) forwards; /* Упругая анимация */
+}
+
+.hero h1 {
+    font-size: calc(2.5rem + 2vw); /* Адаптивный размер шрифта */
+    margin-bottom: 20px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.8);
+    font-weight: 700;
+    animation-delay: 0.3s;
+}
+
+.hero p {
+    font-size: calc(1rem + 0.3vw);
+    margin-bottom: 35px;
+    max-width: 700px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    animation-delay: 0.5s;
+}
+
+.hero .button {
+    animation-delay: 0.7s;
+    /* Добавим легкий "дышащий" эффект кнопке */
+    animation: fadeInUp 1s var(--transition-bounce) forwards,
+               pulse 2.5s infinite ease-in-out 1.7s; /* Вторая анимация пульсации */
+}
+
+/* Ключевые кадры для анимации появления */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ключевые кадры для пульсации кнопки */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(13, 110, 253, 0.5); }
+}
+
+/* =========================================
+   Карточки проектов (Больше интерактива)
+   ========================================= */
+.projects {
+    padding: 80px 8%; /* Больше отступы */
+    text-align: center;
+    background-color: var(--light-bg);
+    position: relative;
+    overflow: hidden; /* Для псевдоэлементов фона */
+}
+
+/* Добавим фоновый паттерн/градиент */
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px; /* Высота фонового элемента */
+    background: linear-gradient(to bottom, var(--primary-light), transparent);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.projects h2 {
+    font-size: calc(2rem + 1vw);
+    margin-bottom: 50px;
+    color: var(--dark-text);
+    position: relative; /* Чтобы быть поверх псевдоэлемента */
+    z-index: 1;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Шире карточки */
+    gap: 40px; /* Больше расстояние */
+    justify-content: center;
+    position: relative; /* Чтобы быть поверх псевдоэлемента */
+    z-index: 1;
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: var(--border-radius-lg); /* Больше скругление */
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed) var(--transition-bounce),
+                box-shadow var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* Анимация появления карточек (поочередная) */
+    opacity: 0;
+    transform: scale(0.9);
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Добавляем задержку для анимации карточек */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+/* ... добавьте для большего кол-ва карточек */
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.04); /* Выше подъем, больше увеличение */
+    box-shadow: var(--card-hover-shadow);
+}
+
+.project-card .card-image-wrapper { /* Обертка для изображения (Новое) */
+    overflow: hidden; /* Скрываем вылезающую часть картинки */
+    height: 240px; /* Выше картинка */
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%; /* Растягиваем на всю обертку */
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease; /* Дольше анимация */
+    filter: saturate(0.8); /* Слегка приглушаем цвета */
+}
+
+.project-card:hover img {
+    transform: scale(1.1); /* Сильнее увеличение */
+    filter: saturate(1.2); /* Делаем цвета ярче */
+}
+
+.project-card .card-content {
+    padding: 25px; /* Больше отступы */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Выравнивание кнопки внизу */
+    text-align: center; /* Центрируем текст */
+}
+
+.project-card h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: var(--primary-hover-color); /* Темно-синий */
+    font-weight: 700;
+}
+
+.project-card p {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 20px; /* Отступ перед кнопкой (если есть) */
+    flex-grow: 1; /* Текст занимает место до кнопки */
+}
+
+#about{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Можно добавить кнопку "Подробнее" в карточку */
+.project-card .card-button {
+    align-self: center; /* Кнопка по центру */
+    margin-top: auto; /* Прижимаем к низу, если текст короткий */
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    background: var(--primary-light);
+    color: var(--primary-hover-color);
+    box-shadow: none;
+}
+.project-card .card-button:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}
+
+/* =========================================
+   Форма (Стеклянная и плавная)
+   ========================================= */
+.form-section {
+    padding: 80px 8%;
+    background: url('path/to/your/subtle-background-pattern.svg'), var(--section-bg); /* Можно добавить текстуру */
+    background-color: var(--section-bg); /* Фоновый цвет секции */
+    position: relative;
+}
+
+/* Добавим декоративные элементы */
+.form-section::before, .form-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-light);
+    opacity: 0.1;
+    z-index: 0;
+    filter: blur(50px); /* Сильный блюр для мягкости */
+}
+.form-section::before { /* Большой круг */
+    width: 300px; height: 300px; top: 10%; left: 5%;
+}
+.form-section::after { /* Маленький круг */
+    width: 150px; height: 150px; bottom: 15%; right: 10%;
+    background: var(--success-color); /* Другой цвет для разнообразия */
+}
+
+
+.form-section h2 {
+    text-align: center;
+    font-size: calc(2rem + 1vw);
+    margin-bottom: 50px;
+    color: var(--dark-text);
+    position: relative; z-index: 1; /* Поверх декора */
+}
+
+form {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Эффект стекла для формы */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: var(--blur-effect);
+    -webkit-backdrop-filter: var(--blur-effect);
+    padding: 40px; /* Больше паддинг */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15); /* Более заметная тень */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Тонкая светлая граница */
+    position: relative; z-index: 1; /* Поверх декора */
+    /* Анимация появления формы */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+input, textarea {
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.8); /* Слегка прозрачный фон полей */
+    color: var(--dark-text);
+    transition: border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease,
+                background-color var(--transition-speed) ease;
+}
+input::placeholder, textarea::placeholder { /* Стилизация плейсхолдера */
+    color: var(--secondary-color);
+    opacity: 0.8;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15); /* Ярче тень при фокусе */
+    background-color: var(--white); /* Непрозрачный фон при фокусе */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+form .button {
+    align-self: center; /* Кнопка по центру */
+    padding: 14px 35px; /* Больше кнопка */
+    margin-top: 10px;
+}
+
+/* =========================================
+   Футер (Градиентный и анимированный)
+   ========================================= */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 8%;
+    background: var(--gradient-dark); /* Темный градиент */
+    color: rgba(255, 255, 255, 0.85);
+    border-top: 4px solid var(--primary-color); /* Ярче граница */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-left: 18px;
+    transition: transform var(--transition-speed) var(--transition-bounce), opacity var(--transition-speed) ease;
+    opacity: 0.75;
+}
+
+.social-links img {
+    height: 26px;
+    vertical-align: middle;
+    filter: grayscale(30%) brightness(1.5); /* Слегка обесцвечиваем и делаем ярче */
+     transition: filter var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    transform: scale(1.2) rotate(10deg); /* Увеличение с поворотом */
+}
+.social-links a:hover img {
+    filter: grayscale(0%) brightness(1); /* Возвращаем нормальный вид */
+}
+
+
+/* =========================================
+   Адаптивность (Скорректированная)
+   ========================================= */
+@media (max-width: 992px) {
+    /* Уменьшаем паддинги для планшетов */
+    header, .projects, .form-section, footer { padding-left: 5%; padding-right: 5%; }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 4%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    nav { margin-top: 5px; }
+    nav a { margin: 0 8px; font-size: 0.95rem; }
+
+    .hero { height: 60vh; min-height: 400px; }
+    .hero h1 { font-size: calc(2rem + 3vw); }
+    .hero p { font-size: calc(0.9rem + 0.5vw); max-width: 90%; }
+
+    .projects, .form-section, footer { padding: 50px 4%; }
+    .projects h2, .form-section h2 { font-size: calc(1.8rem + 1.5vw); margin-bottom: 30px;}
+
+    .project-grid { grid-template-columns: 1fr; gap: 25px; }
+    .project-card { border-radius: var(--border-radius-md); }
+    .project-card img { height: 200px; }
+
+    form { padding: 25px; gap: 15px; }
+    input, textarea { padding: 12px 15px; font-size: 0.95rem;}
+
+    footer { flex-direction: column; text-align: center; padding: 30px 4%; }
+    .social-links { margin-top: 15px; }
+    .social-links a { margin: 0 12px; }
+}
+
+@media (max-width: 480px) {
+    /* Дальнейшие уменьшения для маленьких мобильных */
+    .hero h1 { font-size: calc(1.8rem + 4vw); }
+    .hero p { font-size: calc(0.85rem + 1vw); }
+    .button, form .button { padding: 10px 20px; font-size: 0.9rem; }
+    .project-grid { gap: 20px; }
+    .project-card h3 { font-size: 1.2rem; }
+    .project-card p { font-size: 0.9rem;}
+    form { padding: 20px 15px; }
+}
+
+/* Дополнительно: Класс для скрытия на мобильных */
+.hide-mobile {
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+}
+
+/* Дополнительно: Класс для скрытия на десктопе */
+.hide-desktop {
+    @media (min-width: 769px) {
+        display: none !important;
+    }
+}
